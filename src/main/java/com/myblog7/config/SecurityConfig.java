@@ -32,7 +32,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/api/**").permitAll()
+                //.antMatchers(HttpMethod.GET, "/api/**").permitAll()
+                .antMatchers( "/api/**").permitAll()
+                .antMatchers( HttpMethod.GET,"/api/post/**").permitAll()
                 .antMatchers( "/api/auth/**").permitAll()
                 .anyRequest()
                 .authenticated()
@@ -64,7 +66,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //    }
 //    @Override
 //    @Bean
-//    protected UserDetailsService userDetailsService() {
+//     protected UserDetailsService userDetailsService() {
 //        UserDetails user =
 //                User.builder().username("pankaj").password(getEncoder()
 //                        .encode("password")).roles("USER").build();
@@ -72,8 +74,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                User.builder().username("admin").password(getEncoder()
 //                        .encode("admin")).roles("ADMIN").build();
 //        return new InMemoryUserDetailsManager(user, admin);
-//    }
-
+//  }
 
 }
 

@@ -10,7 +10,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/post")
@@ -30,7 +29,7 @@ public class PostController {
             return new ResponseEntity<>(result.getFieldError().getDefaultMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
         }
         PostDto dto = postService.savePost(postDto);
-        return new ResponseEntity<>(dto, HttpStatus.CREATED);//201
+        return new ResponseEntity<>(dto, HttpStatus.CREATED);
     }
 
     //http://localhost:8080/api/post/1
@@ -60,6 +59,7 @@ public class PostController {
         return new ResponseEntity<>(dto,HttpStatus.OK);
     }
     //http://localhost:8080/api/post?pageNo=0&pageSize=5&sortBy=title&sortDir=desc
+    //http://localhost:8080/api/post
     @GetMapping
     public PostResponse getPost(
             @RequestParam(value="pageNo",defaultValue ="0",required = false) int pageNo,

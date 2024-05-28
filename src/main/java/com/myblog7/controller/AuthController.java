@@ -32,6 +32,8 @@ public class AuthController {
     private AuthenticationManager authenticationManager;
     @Autowired
     private JwtTokenProvider tokenProvider;
+
+    //http://localhost:8080/api/auth/signin
     @PostMapping("/signin")
     public ResponseEntity<JWTAuthResponse> authenticateUser(@RequestBody LoginDto loginDto){
         Authentication authentication = authenticationManager.authenticate(new

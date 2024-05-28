@@ -29,7 +29,4 @@ public class CustomUserDetailsService implements UserDetailsService {
                 .map(role -> new SimpleGrantedAuthority(role.getName())) // Assuming your Role entity has a "name" property
                 .collect(Collectors.toList());
     }
-
-
-
 }
